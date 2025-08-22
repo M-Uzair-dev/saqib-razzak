@@ -179,7 +179,7 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div ref={heroTextRef} className="space-y-6 lg:space-y-8">
                 <div className="space-y-2">
-                  <p className="text-blue-600 font-medium text-base sm:text-lg animate-shimmer w-max px-4">
+                  <p className="text-blue-600 font-medium text-base sm:text-lg animate-shimmer w-max px-4 ">
                     Educator & Software Engineer
                   </p>
                   <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
@@ -191,7 +191,7 @@ export default function Home() {
                 </div>
 
                 <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                  I'm Saqib Razzak, a dedicated teacher for O Levels, A Levels,
+                  I&apos;m Saqib Razzak, a dedicated teacher for O Levels, A Levels,
                   and Intermediate students, with a strong background in
                   software engineering. My passion lies in making complex
                   concepts simple, nurturing curiosity, and empowering students
@@ -562,9 +562,9 @@ export default function Home() {
                       </div>
                     </div>
                     <p className="text-sm text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                      "Sir Saqib's teaching method made complex concepts so easy
+                      &ldquo;Sir Saqib&apos;s teaching method made complex concepts so easy
                       to understand. I scored A* in Mathematics thanks to his
-                      guidance and support."
+                      guidance and support.&rdquo;
                     </p>
                     <div className="flex text-yellow-400 mt-3 group-hover:scale-110 transition-transform duration-300">
                       ★★★★★
@@ -592,9 +592,9 @@ export default function Home() {
                       </div>
                     </div>
                     <p className="text-sm text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                      "The best teacher I've ever had! His patience and clear
+                      &ldquo;The best teacher I&apos;ve ever had! His patience and clear
                       explanations helped me improve from C to A grade in just 6
-                      months."
+                      months.&rdquo;
                     </p>
                     <div className="flex text-yellow-400 mt-3 group-hover:scale-110 transition-transform duration-300">
                       ★★★★★
@@ -624,9 +624,9 @@ export default function Home() {
                       </div>
                     </div>
                     <p className="text-sm text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                      "Sir's programming concepts and problem-solving approach
+                      &ldquo;Sir&apos;s programming concepts and problem-solving approach
                       prepared me well for university. Highly recommend his
-                      classes!"
+                      classes!&rdquo;
                     </p>
                     <div className="flex text-yellow-400 mt-3 group-hover:scale-110 transition-transform duration-300">
                       ★★★★★
