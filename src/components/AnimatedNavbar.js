@@ -62,7 +62,7 @@ export default function AnimatedNavbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2" ref={logoRef}>
+            <Link href="/" className="cursor-pointer flex items-center space-x-2" ref={logoRef}>
               <Image
                 src="/logo.png"
                 alt="Saqib Razzak Logo"
@@ -81,7 +81,7 @@ export default function AnimatedNavbar() {
               <Link
                 ref={addToLinksRef}
                 href="/"
-                className="text-gray-700 hover:text-[#f7991B] px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
+                className="cursor-pointer text-gray-700 hover:text-[#f7991B] px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
               >
                 Home
               </Link>
@@ -89,7 +89,7 @@ export default function AnimatedNavbar() {
               <div className="relative" ref={addToLinksRef}>
                 <button
                   onClick={() => handleDropdownToggle('olevel')}
-                  className="text-gray-700 hover:text-[#f7991B] px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center hover:scale-105"
+                  className="cursor-pointer text-gray-700 hover:text-[#f7991B] px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center hover:scale-105"
                 >
                   O Level
                   <svg className={`ml-1 h-4 w-4 transition-transform duration-300 ${
@@ -100,10 +100,10 @@ export default function AnimatedNavbar() {
                 </button>
                 {activeDropdown === 'olevel' && (
                   <div className="absolute top-full left-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-100 animate-slideDown">
-                    <Link href="/olevel/p1" className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] first:rounded-t-lg transition-all duration-200 hover:translate-x-1">
+                    <Link href="/olevel/p1" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] first:rounded-t-lg transition-all duration-200 hover:translate-x-1">
                       P1
                     </Link>
-                    <Link href="/olevel/p2" className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] last:rounded-b-lg transition-all duration-200 hover:translate-x-1">
+                    <Link href="/olevel/p2" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] last:rounded-b-lg transition-all duration-200 hover:translate-x-1">
                       P2
                     </Link>
                   </div>
@@ -113,7 +113,7 @@ export default function AnimatedNavbar() {
               <div className="relative" ref={addToLinksRef}>
                 <button
                   onClick={() => handleDropdownToggle('alevel')}
-                  className="text-gray-700 hover:text-[#8457A4] px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center hover:scale-105"
+                  className="cursor-pointer text-gray-700 hover:text-[#8457A4] px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center hover:scale-105"
                 >
                   A Level
                   <svg className={`ml-1 h-4 w-4 transition-transform duration-300 ${
@@ -124,10 +124,10 @@ export default function AnimatedNavbar() {
                 </button>
                 {activeDropdown === 'alevel' && (
                   <div className="absolute top-full left-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-100 animate-slideDown">
-                    <Link href="/alevel/as" className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#8457A4]/5 hover:text-[#8457A4] first:rounded-t-lg transition-all duration-200 hover:translate-x-1">
+                    <Link href="/alevel/as" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#8457A4]/5 hover:text-[#8457A4] first:rounded-t-lg transition-all duration-200 hover:translate-x-1">
                       AS
                     </Link>
-                    <Link href="/alevel/a2" className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#8457A4]/5 hover:text-[#8457A4] last:rounded-b-lg transition-all duration-200 hover:translate-x-1">
+                    <Link href="/alevel/a2" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#8457A4]/5 hover:text-[#8457A4] last:rounded-b-lg transition-all duration-200 hover:translate-x-1">
                       A2
                     </Link>
                   </div>
@@ -137,7 +137,7 @@ export default function AnimatedNavbar() {
               <div className="relative" ref={addToLinksRef}>
                 <button
                   onClick={() => handleDropdownToggle('intermediate')}
-                  className="text-gray-700 hover:text-[#f7991B] px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center hover:scale-105"
+                  className="cursor-pointer text-gray-700 hover:text-[#f7991B] px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center hover:scale-105"
                 >
                   Intermediate
                   <svg className={`ml-1 h-4 w-4 transition-transform duration-300 ${
@@ -148,10 +148,10 @@ export default function AnimatedNavbar() {
                 </button>
                 {activeDropdown === 'intermediate' && (
                   <div className="absolute top-full left-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-100 animate-slideDown">
-                    <Link href="/intermediate/xi" className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] first:rounded-t-lg transition-all duration-200 hover:translate-x-1">
+                    <Link href="/intermediate/xi" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] first:rounded-t-lg transition-all duration-200 hover:translate-x-1">
                       XI
                     </Link>
-                    <Link href="/intermediate/xii" className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] last:rounded-b-lg transition-all duration-200 hover:translate-x-1">
+                    <Link href="/intermediate/xii" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] last:rounded-b-lg transition-all duration-200 hover:translate-x-1">
                       XII
                     </Link>
                   </div>
@@ -161,7 +161,7 @@ export default function AnimatedNavbar() {
               <Link
                 ref={addToLinksRef}
                 href="/contact"
-                className="bg-[#8457A4] hover:bg-[#6d4589] text-white px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:-translate-y-0.5"
+                className="cursor-pointer bg-[#8457A4] hover:bg-[#6d4589] text-white px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:-translate-y-0.5"
               >
                 Contact
               </Link>

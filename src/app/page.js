@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedNavbar from "@/components/AnimatedNavbar";
@@ -20,6 +21,7 @@ export default function Home() {
   const skillsRef = useRef([]);
   const coursesRef = useRef([]);
   const testimonialsRef = useRef([]);
+  const [showContactDialog, setShowContactDialog] = useState(false);
 
   useEffect(() => {
     // Add a small delay to ensure all refs are populated
@@ -160,6 +162,21 @@ export default function Home() {
     }
   };
 
+  const scrollToCourses = () => {
+    const coursesSection = document.querySelector('.courses-section');
+    if (coursesSection) {
+      coursesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const openContactDialog = () => {
+    setShowContactDialog(true);
+  };
+
+  const closeContactDialog = () => {
+    setShowContactDialog(false);
+  };
+
   return (
     <SmoothScroll>
       <div ref={containerRef} className="min-h-screen bg-white">
@@ -200,13 +217,19 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <button className="group bg-[#f7991B] hover:bg-[#e6850f] text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg transform hover:-translate-y-1">
+                  <button 
+                    onClick={scrollToCourses}
+                    className="cursor-pointer group bg-[#f7991B] hover:bg-[#e6850f] text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg transform hover:-translate-y-1"
+                  >
                     <span className="group-hover:animate-pulse">
                       Explore Courses
                     </span>
                   </button>
-                  <button className="group border border-gray-300 hover:border-[#8457A4] text-gray-700 hover:text-[#8457A4] px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-md">
-                    Learn More
+                  <button 
+                    onClick={openContactDialog}
+                    className="cursor-pointer group border border-gray-300 hover:border-[#8457A4] text-gray-700 hover:text-[#8457A4] px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-md"
+                  >
+                    Contact
                   </button>
                 </div>
               </div>
@@ -398,7 +421,7 @@ export default function Home() {
                   className="text-sm text-gray-600 max-w-2xl mx-auto animate-fadeInUp"
                   style={{ animationDelay: "0.2s" }}
                 >
-                  Choose from our comprehensive range of courses designed for
+                  Choose from my comprehensive range of courses designed for
                   different educational levels
                 </p>
               </div>
@@ -537,7 +560,7 @@ export default function Home() {
                   className="text-sm text-gray-600 max-w-2xl mx-auto animate-fadeInUp"
                   style={{ animationDelay: "0.2s" }}
                 >
-                  Hear from students who have achieved success through our
+                  Hear from students who have achieved success through my
                   teaching methods
                 </p>
               </div>
@@ -699,6 +722,64 @@ export default function Home() {
             </div>
           </footer>
         </main>
+
+        {/* Contact Dialog */}
+        {showContactDialog && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-auto relative animate-fadeIn">
+              <button
+                onClick={closeContactDialog}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 cursor-pointer"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-[#8457A4]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-[#8457A4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Get In Touch</h3>
+                <p className="text-gray-600">Ready to start your learning journey with me?</p>
+              </div>
+
+              <div className="space-y-4">
+                <Link
+                  href="/contact"
+                  className="cursor-pointer w-full bg-[#8457A4] hover:bg-[#6d4589] text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center"
+                >
+                  Contact Form
+                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center p-4 border border-gray-200 rounded-lg hover:border-[#8457A4] transition-colors cursor-pointer">
+                    <div className="w-8 h-8 bg-[#f7991B]/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <svg className="w-4 h-4 text-[#f7991B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <p className="text-xs text-gray-600">Call Me</p>
+                  </div>
+                  
+                  <div className="text-center p-4 border border-gray-200 rounded-lg hover:border-[#8457A4] transition-colors cursor-pointer">
+                    <div className="w-8 h-8 bg-[#8457A4]/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <svg className="w-4 h-4 text-[#8457A4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                    <p className="text-xs text-gray-600">WhatsApp</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </SmoothScroll>
   );
