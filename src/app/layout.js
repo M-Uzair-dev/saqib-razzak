@@ -20,8 +20,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.variable} font-poppins antialiased bg-white text-gray-900`}
       >
-        <div style={{ opacity: 0.4 }}>
-          <SplashCursor SPLAT_RADIUS={0.4} />
+        <div style={{ opacity: 0.25 }}>
+          <SplashCursor SPLAT_RADIUS={0.1} />
         </div>
 
         {children}

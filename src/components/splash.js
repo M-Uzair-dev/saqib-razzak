@@ -2,18 +2,18 @@
 import { useEffect, useRef } from "react";
 
 function SplashCursor({
-  SIM_RESOLUTION = 128,
-  DYE_RESOLUTION = 1440,
-  CAPTURE_RESOLUTION = 512,
-  DENSITY_DISSIPATION = 3.5,
-  VELOCITY_DISSIPATION = 2,
-  PRESSURE = 0.1,
-  PRESSURE_ITERATIONS = 20,
-  CURL = 3,
-  SPLAT_RADIUS = 0.2,
-  SPLAT_FORCE = 6000,
-  SHADING = true,
-  COLOR_UPDATE_SPEED = 10,
+  SIM_RESOLUTION = 32,
+  DYE_RESOLUTION = 256,
+  CAPTURE_RESOLUTION = 128,
+  DENSITY_DISSIPATION = 6.0,
+  VELOCITY_DISSIPATION = 4.0,
+  PRESSURE = 0.05,
+  PRESSURE_ITERATIONS = 10,
+  CURL = 1,
+  SPLAT_RADIUS = 0.15,
+  SPLAT_FORCE = 3000,
+  SHADING = false,
+  COLOR_UPDATE_SPEED = 3,
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true,
 }) {
@@ -789,8 +789,19 @@ function SplashCursor({
     initFramebuffers();
     let lastUpdateTime = Date.now();
     let colorUpdateTimer = 0.0;
+    let frameCount = 0;
+    let isUserInteracting = false;
+    let interactionTimeout;
 
     function updateFrame() {
+      frameCount++;
+      
+      // Only run at 30fps instead of 60fps to reduce CPU usage
+      if (frameCount % 2 !== 0) {
+        requestAnimationFrame(updateFrame);
+        return;
+      }
+      
       const dt = calcDeltaTime();
       if (resizeCanvas()) initFramebuffers();
       updateColors(dt);
@@ -986,11 +997,11 @@ function SplashCursor({
 
     function clickSplat(pointer) {
       const color = generateColor();
-      color.r *= 10.0;
-      color.g *= 10.0;
-      color.b *= 10.0;
-      let dx = 10 * (Math.random() - 0.5);
-      let dy = 30 * (Math.random() - 0.5);
+      color.r *= 5.0;
+      color.g *= 5.0;
+      color.b *= 5.0;
+      let dx = 5 * (Math.random() - 0.5);
+      let dy = 15 * (Math.random() - 0.5);
       splat(pointer.texcoordX, pointer.texcoordY, dx, dy, color);
     }
 
@@ -1064,10 +1075,10 @@ function SplashCursor({
     }
 
     function generateColor() {
-      let c = HSVtoRGB(Math.random(), 1.0, 1.0);
-      c.r *= 0.15;
-      c.g *= 0.15;
-      c.b *= 0.15;
+      let c = HSVtoRGB(Math.random(), 0.7, 0.8);
+      c.r *= 0.08;
+      c.g *= 0.08;
+      c.b *= 0.08;
       return c;
     }
 
@@ -1146,7 +1157,16 @@ function SplashCursor({
       return hash;
     }
 
+    function setUserInteracting() {
+      isUserInteracting = true;
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        isUserInteracting = false;
+      }, 2000);
+    }
+
     window.addEventListener("mousedown", (e) => {
+      setUserInteracting();
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
@@ -1168,6 +1188,7 @@ function SplashCursor({
     );
 
     window.addEventListener("mousemove", (e) => {
+      setUserInteracting();
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
@@ -1191,6 +1212,7 @@ function SplashCursor({
     );
 
     window.addEventListener("touchstart", (e) => {
+      setUserInteracting();
       const touches = e.targetTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
@@ -1203,6 +1225,7 @@ function SplashCursor({
     window.addEventListener(
       "touchmove",
       (e) => {
+        setUserInteracting();
         const touches = e.targetTouches;
         let pointer = pointers[0];
         for (let i = 0; i < touches.length; i++) {

@@ -64,7 +64,7 @@ export default function AnimatedNavbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2" ref={logoRef}>
               <Image
-                src="/logo.jpg"
+                src="/logo.png"
                 alt="Saqib Razzak Logo"
                 width={36}
                 height={36}
