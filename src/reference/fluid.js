@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unknown-property */
+/* eslint-disable jsx-a11y/alt-text */
 import * as THREE from 'three'
 import { useRef, useState, useEffect, memo } from 'react'
 import { Canvas, createPortal, useFrame, useThree } from '@react-three/fiber'
@@ -210,8 +210,7 @@ function NavItems({ items }) {
     const onResize = () => setDevice(getDevice())
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [getDevice])
 
   const { spacing, fontSize } = DEVICE[device]
 
@@ -328,8 +327,7 @@ function Typography() {
     const onResize = () => setDevice(getDevice())
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [getDevice])
 
   const { fontSize } = DEVICE[device]
 
