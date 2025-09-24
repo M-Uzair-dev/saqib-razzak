@@ -88,39 +88,16 @@ export default function IntermediateXI() {
           <section className="py-16 bg-gray-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-              {/* PDF Notes Section */}
-              <div ref={addToContentRef} className="mb-16">
-                <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Class XI Study Materials</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[
-                    { title: "Mathematics XI", description: "Algebra, trigonometry & calculus", pages: "60 pages" },
-                    { title: "Computer Science XI", description: "Programming basics & theory", pages: "45 pages" },
-                    { title: "Physics XI", description: "Mechanics and thermal physics", pages: "55 pages" },
-                    { title: "Chemistry XI", description: "Atomic structure & bonding", pages: "50 pages" },
-                    { title: "English XI", description: "Literature and composition", pages: "40 pages" },
-                    { title: "Combined Practice Tests", description: "Mock exams and assessments", pages: "35 pages" }
-                  ].map((pdf, index) => (
-                    <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group hover:scale-105">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4 group-hover:bg-red-200 transition-colors">
-                          <svg className="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900 group-hover:text-[#f7991B] transition-colors">{pdf.title}</h3>
-                          <p className="text-xs text-gray-500">{pdf.pages}</p>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-3">{pdf.description}</p>
-                      <div className="flex items-center text-sm text-[#f7991B] font-medium">
-                        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        Download PDF
-                      </div>
-                    </div>
-                  ))}
+              <div ref={addToContentRef} className="text-center">
+                <div className="bg-white rounded-2xl p-12 shadow-lg">
+                  <div className="w-24 h-24 bg-[#f7991B]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-12 h-12 text-[#f7991B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">Coming Soon!</h2>
+                  <p className="text-xl text-gray-600 mb-2">Notes for <span className="text-[#f7991B] font-semibold">Intermediate XI</span> will be added soon!</p>
+                  <p className="text-gray-500">Stay tuned for comprehensive study materials across all subjects.</p>
                 </div>
               </div>
             </div>

@@ -274,7 +274,7 @@ export default function Home() {
                   className="group hover:transform hover:scale-110 transition-all duration-300 py-4 opacity-100"
                 >
                   <div className="text-2xl sm:text-3xl font-bold text-[#f7991B] group-hover:animate-pulse mb-2">
-                    5+
+                    10+
                   </div>
                   <div className="text-sm sm:text-base text-gray-600">
                     Years of Teaching
@@ -285,7 +285,7 @@ export default function Home() {
                   className="group hover:transform hover:scale-110 transition-all duration-300 py-4 opacity-100"
                 >
                   <div className="text-2xl sm:text-3xl font-bold text-[#f7991B] group-hover:animate-pulse mb-2">
-                    500+
+                    2500+
                   </div>
                   <div className="text-sm sm:text-base text-gray-600">
                     Students Mentored
@@ -447,22 +447,26 @@ export default function Home() {
                       excellence
                     </p>
                     <div className="space-y-3">
-                      <div className="bg-gray-50 group-hover:bg-[#f7991B]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105">
-                        <h4 className="font-semibold text-sm text-gray-900">
-                          Paper 1 (P1)
-                        </h4>
-                        <p className="text-xs text-gray-600">
-                          Theory and conceptual understanding
-                        </p>
-                      </div>
-                      <div className="bg-gray-50 group-hover:bg-[#f7991B]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105">
-                        <h4 className="font-semibold text-sm text-gray-900">
-                          Paper 2 (P2)
-                        </h4>
-                        <p className="text-xs text-gray-600">
-                          Practical applications and problem solving
-                        </p>
-                      </div>
+                      <Link href="/olevel/p1" className="block">
+                        <div className="bg-gray-50 group-hover:bg-[#f7991B]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer hover:bg-[#f7991B]/10">
+                          <h4 className="font-semibold text-sm text-gray-900">
+                            Paper 1 (P1)
+                          </h4>
+                          <p className="text-xs text-gray-600">
+                            Theory and conceptual understanding
+                          </p>
+                        </div>
+                      </Link>
+                      <Link href="/olevel/p2" className="block">
+                        <div className="bg-gray-50 group-hover:bg-[#f7991B]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer hover:bg-[#f7991B]/10">
+                          <h4 className="font-semibold text-sm text-gray-900">
+                            Paper 2 (P2)
+                          </h4>
+                          <p className="text-xs text-gray-600">
+                            Practical applications and problem solving
+                          </p>
+                        </div>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -487,22 +491,26 @@ export default function Home() {
                       career readiness
                     </p>
                     <div className="space-y-3">
-                      <div className="bg-gray-50 group-hover:bg-[#8457A4]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105">
-                        <h4 className="font-semibold text-sm text-gray-900">
-                          AS Level
-                        </h4>
-                        <p className="text-xs text-gray-600">
-                          Foundation for advanced studies
-                        </p>
-                      </div>
-                      <div className="bg-gray-50 group-hover:bg-[#8457A4]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105">
-                        <h4 className="font-semibold text-sm text-gray-900">
-                          A2 Level
-                        </h4>
-                        <p className="text-xs text-gray-600">
-                          Advanced concepts and applications
-                        </p>
-                      </div>
+                      <Link href="/alevel/as" className="block">
+                        <div className="bg-gray-50 group-hover:bg-[#8457A4]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer hover:bg-[#8457A4]/10">
+                          <h4 className="font-semibold text-sm text-gray-900">
+                            AS Level
+                          </h4>
+                          <p className="text-xs text-gray-600">
+                            Foundation for advanced studies
+                          </p>
+                        </div>
+                      </Link>
+                      <Link href="/alevel/a2" className="block">
+                        <div className="bg-gray-50 group-hover:bg-[#8457A4]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer hover:bg-[#8457A4]/10">
+                          <h4 className="font-semibold text-sm text-gray-900">
+                            A2 Level
+                          </h4>
+                          <p className="text-xs text-gray-600">
+                            Advanced concepts and applications
+                          </p>
+                        </div>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -526,22 +534,26 @@ export default function Home() {
                       Complete intermediate education support for HSC students
                     </p>
                     <div className="space-y-3">
-                      <div className="bg-gray-50 group-hover:bg-[#f7991B]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105">
-                        <h4 className="font-semibold text-sm text-gray-900">
-                          Class XI
-                        </h4>
-                        <p className="text-xs text-gray-600">
-                          First year intermediate foundation
-                        </p>
-                      </div>
-                      <div className="bg-gray-50 group-hover:bg-[#f7991B]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105">
-                        <h4 className="font-semibold text-sm text-gray-900">
-                          Class XII
-                        </h4>
-                        <p className="text-xs text-gray-600">
-                          Second year completion and exam prep
-                        </p>
-                      </div>
+                      <Link href="/intermediate/xi" className="block">
+                        <div className="bg-gray-50 group-hover:bg-[#f7991B]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer hover:bg-[#f7991B]/10">
+                          <h4 className="font-semibold text-sm text-gray-900">
+                            Class XI
+                          </h4>
+                          <p className="text-xs text-gray-600">
+                            First year intermediate foundation
+                          </p>
+                        </div>
+                      </Link>
+                      <Link href="/intermediate/xii" className="block">
+                        <div className="bg-gray-50 group-hover:bg-[#f7991B]/5 p-3 rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer hover:bg-[#f7991B]/10">
+                          <h4 className="font-semibold text-sm text-gray-900">
+                            Class XII
+                          </h4>
+                          <p className="text-xs text-gray-600">
+                            Second year completion and exam prep
+                          </p>
+                        </div>
+                      </Link>
                     </div>
                   </div>
                 </div>

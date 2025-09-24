@@ -6,6 +6,7 @@ import { gsap } from 'gsap';
 
 export default function AnimatedNavbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
   const logoRef = useRef(null);
   const linksRef = useRef([]);
@@ -47,6 +48,21 @@ export default function AnimatedNavbar() {
     return () => ctx.revert();
   }, []);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (mobileMenuOpen && navRef.current && !navRef.current.contains(event.target)) {
+        setMobileMenuOpen(false);
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
+
   const handleDropdownToggle = (dropdownName) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
@@ -75,7 +91,26 @@ export default function AnimatedNavbar() {
               </span>
             </Link>
           </div>
-          
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-[#f7991B] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#f7991B] transition-colors duration-200"
+            >
+              <span className="sr-only">Open main menu</span>
+              {!mobileMenuOpen ? (
+                <svg className="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              ) : (
+                <svg className="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              )}
+            </button>
+          </div>
+
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-6">
               <Link
@@ -168,6 +203,128 @@ export default function AnimatedNavbar() {
             </div>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-4 py-4 space-y-3 bg-white border-t border-gray-100 shadow-lg">
+              <Link
+                href="/"
+                className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-[#f7991B] hover:bg-gray-50 transition-all duration-200"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+
+              {/* O Level Mobile Section */}
+              <div className="space-y-2">
+                <button
+                  onClick={() => handleDropdownToggle('mobile-olevel')}
+                  className="w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-[#f7991B] hover:bg-gray-50 transition-all duration-200"
+                >
+                  O Level
+                  <svg className={`h-4 w-4 transition-transform duration-300 ${
+                    activeDropdown === 'mobile-olevel' ? 'rotate-180' : ''
+                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {activeDropdown === 'mobile-olevel' && (
+                  <div className="pl-6 space-y-2 pt-1 pb-2">
+                    <Link
+                      href="/olevel/p1"
+                      className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#f7991B] hover:bg-gray-50 transition-all duration-200"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Paper 1
+                    </Link>
+                    <Link
+                      href="/olevel/p2"
+                      className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#f7991B] hover:bg-gray-50 transition-all duration-200"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Paper 2
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* A Level Mobile Section */}
+              <div className="space-y-2">
+                <button
+                  onClick={() => handleDropdownToggle('mobile-alevel')}
+                  className="w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-[#8457A4] hover:bg-gray-50 transition-all duration-200"
+                >
+                  A Level
+                  <svg className={`h-4 w-4 transition-transform duration-300 ${
+                    activeDropdown === 'mobile-alevel' ? 'rotate-180' : ''
+                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {activeDropdown === 'mobile-alevel' && (
+                  <div className="pl-6 space-y-2 pt-1 pb-2">
+                    <Link
+                      href="/alevel/as"
+                      className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#8457A4] hover:bg-gray-50 transition-all duration-200"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      AS Level
+                    </Link>
+                    <Link
+                      href="/alevel/a2"
+                      className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#8457A4] hover:bg-gray-50 transition-all duration-200"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      A2 Level
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Intermediate Mobile Section */}
+              <div className="space-y-2">
+                <button
+                  onClick={() => handleDropdownToggle('mobile-intermediate')}
+                  className="w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-[#f7991B] hover:bg-gray-50 transition-all duration-200"
+                >
+                  Intermediate
+                  <svg className={`h-4 w-4 transition-transform duration-300 ${
+                    activeDropdown === 'mobile-intermediate' ? 'rotate-180' : ''
+                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {activeDropdown === 'mobile-intermediate' && (
+                  <div className="pl-6 space-y-2 pt-1 pb-2">
+                    <Link
+                      href="/intermediate/xi"
+                      className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#f7991B] hover:bg-gray-50 transition-all duration-200"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Class XI
+                    </Link>
+                    <Link
+                      href="/intermediate/xii"
+                      className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#f7991B] hover:bg-gray-50 transition-all duration-200"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Class XII
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href="/contact"
+                className="block px-3 py-3 rounded-md text-base font-medium bg-[#8457A4] text-white hover:bg-[#6d4589] transition-all duration-200 text-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
