@@ -1,8 +1,8 @@
-'use client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 export default function AnimatedNavbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -20,7 +20,7 @@ export default function AnimatedNavbar() {
         opacity: 1,
         duration: 1,
         ease: "power3.out",
-        delay: 0.2
+        delay: 0.2,
       });
 
       // Logo animation
@@ -30,7 +30,7 @@ export default function AnimatedNavbar() {
         rotation: 0,
         duration: 0.8,
         ease: "back.out(1.7)",
-        delay: 0.5
+        delay: 0.5,
       });
 
       // Stagger link animations
@@ -41,7 +41,7 @@ export default function AnimatedNavbar() {
         duration: 0.6,
         ease: "power2.out",
         stagger: 0.1,
-        delay: 0.7
+        delay: 0.7,
       });
     }, navRef);
 
@@ -51,15 +51,19 @@ export default function AnimatedNavbar() {
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (mobileMenuOpen && navRef.current && !navRef.current.contains(event.target)) {
+      if (
+        mobileMenuOpen &&
+        navRef.current &&
+        !navRef.current.contains(event.target)
+      ) {
         setMobileMenuOpen(false);
         setActiveDropdown(null);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [mobileMenuOpen]);
 
@@ -74,11 +78,18 @@ export default function AnimatedNavbar() {
   };
 
   return (
-    <nav ref={navRef} className="bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <nav
+      ref={navRef}
+      className="bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100 sticky top-0 z-50"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/" className="cursor-pointer flex items-center space-x-2" ref={logoRef}>
+            <Link
+              href="/"
+              className="cursor-pointer flex items-center space-x-2"
+              ref={logoRef}
+            >
               <Image
                 src="/logo.png"
                 alt="Saqib Razzak Logo"
@@ -100,12 +111,32 @@ export default function AnimatedNavbar() {
             >
               <span className="sr-only">Open main menu</span>
               {!mobileMenuOpen ? (
-                <svg className="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg
+                  className="block h-6 w-6"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               ) : (
-                <svg className="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="block h-6 w-6"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               )}
             </button>
@@ -120,86 +151,127 @@ export default function AnimatedNavbar() {
               >
                 Home
               </Link>
-              
+
               <div className="relative" ref={addToLinksRef}>
                 <button
-                  onClick={() => handleDropdownToggle('olevel')}
+                  onClick={() => handleDropdownToggle("olevel")}
                   className="cursor-pointer text-gray-700 hover:text-[#f7991B] px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center hover:scale-105"
                 >
                   O Level
-                  <svg className={`ml-1 h-4 w-4 transition-transform duration-300 ${
-                    activeDropdown === 'olevel' ? 'rotate-180' : ''
-                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className={`ml-1 h-4 w-4 transition-transform duration-300 ${
+                      activeDropdown === "olevel" ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
-                {activeDropdown === 'olevel' && (
+                {activeDropdown === "olevel" && (
                   <div className="absolute top-full left-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-100 animate-slideDown">
-                    <Link href="/olevel/p1" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] first:rounded-t-lg transition-all duration-200 hover:translate-x-1">
+                    <Link
+                      href="/olevel/p1"
+                      className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] first:rounded-t-lg transition-all duration-200 hover:translate-x-1"
+                    >
                       P1
                     </Link>
-                    <Link href="/olevel/p2" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] last:rounded-b-lg transition-all duration-200 hover:translate-x-1">
+                    <Link
+                      href="/olevel/p2"
+                      className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] last:rounded-b-lg transition-all duration-200 hover:translate-x-1"
+                    >
                       P2
                     </Link>
                   </div>
                 )}
               </div>
-              
+
               <div className="relative" ref={addToLinksRef}>
                 <button
-                  onClick={() => handleDropdownToggle('alevel')}
+                  onClick={() => handleDropdownToggle("alevel")}
                   className="cursor-pointer text-gray-700 hover:text-[#8457A4] px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center hover:scale-105"
                 >
                   A Level
-                  <svg className={`ml-1 h-4 w-4 transition-transform duration-300 ${
-                    activeDropdown === 'alevel' ? 'rotate-180' : ''
-                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className={`ml-1 h-4 w-4 transition-transform duration-300 ${
+                      activeDropdown === "alevel" ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
-                {activeDropdown === 'alevel' && (
+                {activeDropdown === "alevel" && (
                   <div className="absolute top-full left-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-100 animate-slideDown">
-                    <Link href="/alevel/as" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#8457A4]/5 hover:text-[#8457A4] first:rounded-t-lg transition-all duration-200 hover:translate-x-1">
+                    <Link
+                      href="/alevel/as"
+                      className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#8457A4]/5 hover:text-[#8457A4] first:rounded-t-lg transition-all duration-200 hover:translate-x-1"
+                    >
                       AS
                     </Link>
-                    <Link href="/alevel/a2" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#8457A4]/5 hover:text-[#8457A4] last:rounded-b-lg transition-all duration-200 hover:translate-x-1">
+                    <Link
+                      href="/alevel/a2"
+                      className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#8457A4]/5 hover:text-[#8457A4] last:rounded-b-lg transition-all duration-200 hover:translate-x-1"
+                    >
                       A2
                     </Link>
                   </div>
                 )}
               </div>
-              
+
               <div className="relative" ref={addToLinksRef}>
                 <button
-                  onClick={() => handleDropdownToggle('intermediate')}
+                  onClick={() => handleDropdownToggle("intermediate")}
                   className="cursor-pointer text-gray-700 hover:text-[#f7991B] px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center hover:scale-105"
                 >
                   Intermediate
-                  <svg className={`ml-1 h-4 w-4 transition-transform duration-300 ${
-                    activeDropdown === 'intermediate' ? 'rotate-180' : ''
-                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className={`ml-1 h-4 w-4 transition-transform duration-300 ${
+                      activeDropdown === "intermediate" ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
-                {activeDropdown === 'intermediate' && (
+                {activeDropdown === "intermediate" && (
                   <div className="absolute top-full left-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-100 animate-slideDown">
-                    <Link href="/intermediate/xi" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] first:rounded-t-lg transition-all duration-200 hover:translate-x-1">
+                    <Link
+                      href="/intermediate/xi"
+                      className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] first:rounded-t-lg transition-all duration-200 hover:translate-x-1"
+                    >
                       XI
                     </Link>
-                    <Link href="/intermediate/xii" className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] last:rounded-b-lg transition-all duration-200 hover:translate-x-1">
+                    <Link
+                      href="/intermediate/xii"
+                      className="cursor-pointer block px-4 py-3 text-sm text-gray-700 hover:bg-[#f7991B]/5 hover:text-[#f7991B] last:rounded-b-lg transition-all duration-200 hover:translate-x-1"
+                    >
                       XII
                     </Link>
                   </div>
                 )}
               </div>
-              
-              <Link
-                ref={addToLinksRef}
-                href="/contact"
-                className="cursor-pointer bg-[#8457A4] hover:bg-[#6d4589] text-white px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:-translate-y-0.5"
-              >
-                Contact
-              </Link>
+
             </div>
           </div>
         </div>
@@ -219,17 +291,27 @@ export default function AnimatedNavbar() {
               {/* O Level Mobile Section */}
               <div className="space-y-2">
                 <button
-                  onClick={() => handleDropdownToggle('mobile-olevel')}
+                  onClick={() => handleDropdownToggle("mobile-olevel")}
                   className="w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-[#f7991B] hover:bg-gray-50 transition-all duration-200"
                 >
                   O Level
-                  <svg className={`h-4 w-4 transition-transform duration-300 ${
-                    activeDropdown === 'mobile-olevel' ? 'rotate-180' : ''
-                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className={`h-4 w-4 transition-transform duration-300 ${
+                      activeDropdown === "mobile-olevel" ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
-                {activeDropdown === 'mobile-olevel' && (
+                {activeDropdown === "mobile-olevel" && (
                   <div className="pl-6 space-y-2 pt-1 pb-2">
                     <Link
                       href="/olevel/p1"
@@ -252,17 +334,27 @@ export default function AnimatedNavbar() {
               {/* A Level Mobile Section */}
               <div className="space-y-2">
                 <button
-                  onClick={() => handleDropdownToggle('mobile-alevel')}
+                  onClick={() => handleDropdownToggle("mobile-alevel")}
                   className="w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-[#8457A4] hover:bg-gray-50 transition-all duration-200"
                 >
                   A Level
-                  <svg className={`h-4 w-4 transition-transform duration-300 ${
-                    activeDropdown === 'mobile-alevel' ? 'rotate-180' : ''
-                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className={`h-4 w-4 transition-transform duration-300 ${
+                      activeDropdown === "mobile-alevel" ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
-                {activeDropdown === 'mobile-alevel' && (
+                {activeDropdown === "mobile-alevel" && (
                   <div className="pl-6 space-y-2 pt-1 pb-2">
                     <Link
                       href="/alevel/as"
@@ -285,17 +377,29 @@ export default function AnimatedNavbar() {
               {/* Intermediate Mobile Section */}
               <div className="space-y-2">
                 <button
-                  onClick={() => handleDropdownToggle('mobile-intermediate')}
+                  onClick={() => handleDropdownToggle("mobile-intermediate")}
                   className="w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-[#f7991B] hover:bg-gray-50 transition-all duration-200"
                 >
                   Intermediate
-                  <svg className={`h-4 w-4 transition-transform duration-300 ${
-                    activeDropdown === 'mobile-intermediate' ? 'rotate-180' : ''
-                  }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className={`h-4 w-4 transition-transform duration-300 ${
+                      activeDropdown === "mobile-intermediate"
+                        ? "rotate-180"
+                        : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
-                {activeDropdown === 'mobile-intermediate' && (
+                {activeDropdown === "mobile-intermediate" && (
                   <div className="pl-6 space-y-2 pt-1 pb-2">
                     <Link
                       href="/intermediate/xi"
@@ -315,13 +419,6 @@ export default function AnimatedNavbar() {
                 )}
               </div>
 
-              <Link
-                href="/contact"
-                className="block px-3 py-3 rounded-md text-base font-medium bg-[#8457A4] text-white hover:bg-[#6d4589] transition-all duration-200 text-center"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
             </div>
           </div>
         )}

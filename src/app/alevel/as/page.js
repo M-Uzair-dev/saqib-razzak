@@ -72,11 +72,11 @@ export default function ALevelAS() {
                   <span className="w-2 h-2 bg-[#8457A4] rounded-full mr-2 animate-pulse"></span>
                   A Level AS
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                   A Level AS Foundation
                   <span className="block text-[#8457A4] mt-2">Advanced Studies Start Here</span>
                 </h1>
-                <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                <p className="text-base md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                   Build a solid foundation for advanced studies with comprehensive AS level preparation. 
                   Master core concepts that bridge O Level to full A Level mastery.
                 </p>

@@ -72,11 +72,11 @@ export default function OLevelP2() {
                   <span className="w-2 h-2 bg-[#f7991B] rounded-full mr-2 animate-pulse"></span>
                   O Level Paper 2
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                   Excel in O Level Paper 2
                   <span className="block text-[#f7991B] mt-2">Practical Applications</span>
                 </h1>
-                <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                <p className="text-base md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                   Master practical problem-solving with hands-on programming experience. 
                   Focus on algorithm design, coding, and computational thinking.
                 </p>

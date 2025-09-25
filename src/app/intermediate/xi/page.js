@@ -72,11 +72,11 @@ export default function IntermediateXI() {
                   <span className="w-2 h-2 bg-[#f7991B] rounded-full mr-2 animate-pulse"></span>
                   Intermediate Class XI
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                   Class XI Foundation
                   <span className="block text-[#f7991B] mt-2">First Year Excellence</span>
                 </h1>
-                <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                <p className="text-base md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                   Start your intermediate journey with strong foundations in mathematics, 
                   computer science, and essential subjects for higher education success.
                 </p>

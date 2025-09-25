@@ -72,11 +72,11 @@ export default function IntermediateXII() {
                   <span className="w-2 h-2 bg-[#f7991B] rounded-full mr-2 animate-pulse"></span>
                   Intermediate Class XII
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                   Class XII Completion
                   <span className="block text-[#f7991B] mt-2">Final Year Success</span>
                 </h1>
-                <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                <p className="text-base md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                   Complete your intermediate education with excellence. Master advanced concepts, 
                   ace board exams, and prepare for university admission and career success.
                 </p>

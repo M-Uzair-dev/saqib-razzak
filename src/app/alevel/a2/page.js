@@ -72,11 +72,11 @@ export default function ALevelA2() {
                   <span className="w-2 h-2 bg-[#8457A4] rounded-full mr-2 animate-pulse"></span>
                   A Level A2
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                   A Level A2 Mastery
                   <span className="block text-[#8457A4] mt-2">Advanced Level Excellence</span>
                 </h1>
-                <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                <p className="text-base md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                   Complete your A Level journey with advanced concepts, complex projects, and 
                   university-level preparation. Achieve top grades with expert guidance.
                 </p>

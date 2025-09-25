@@ -245,7 +245,7 @@ export default function Home() {
                       alt="Saqib Razzak - Educator & Software Engineer"
                       fill
                       priority
-                      className="rounded-2xl shadow-2xl object-cover object-center hover:shadow-3xl transition-shadow duration-500"
+                      className="rounded-2xl shadow-2xl object-cover object-right hover:shadow-3xl transition-shadow duration-500"
                     />
                   </div>
                   <div className="absolute -inset-3 bg-gradient-to-br from-[#f7991B]/30 via-[#8457A4]/20 to-[#8457A4]/30 blur-2xl -z-10 rounded-3xl animate-pulse opacity-70"></div>
@@ -723,7 +723,7 @@ export default function Home() {
                       </svg>
                     </a>
                     <a
-                      href="https://www.facebook.com/share/1CRQk323eL/"
+                      href="https://www.instagram.com/saqibrazzak_soft_eng?utm_source=qr&igsh=cDBvM3V0MXFhbm9k"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:from-purple-600 hover:to-pink-600 transition-colors"
