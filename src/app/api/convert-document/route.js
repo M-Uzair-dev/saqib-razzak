@@ -6,7 +6,7 @@ const mammoth = require('mammoth');
 
 export async function POST(request) {
   try {
-    const { filename } = await request.json();
+    const { filename, unitPath } = await request.json();
 
     if (!filename) {
       return NextResponse.json(
@@ -15,7 +15,9 @@ export async function POST(request) {
       );
     }
 
-    const filePath = path.join(process.cwd(), 'public', 'OP1', filename);
+    // Use unitPath if provided, otherwise default to root OP1 directory for backward compatibility
+    const basePath = unitPath ? path.join('public', 'OP1', unitPath) : path.join('public', 'OP1');
+    const filePath = path.join(process.cwd(), basePath, filename);
 
     if (!fs.existsSync(filePath)) {
       return NextResponse.json(
@@ -92,10 +94,54 @@ function addSecurityStyles(html) {
         user-select: none !important;
         -webkit-touch-callout: none !important;
         -webkit-tap-highlight-color: transparent !important;
+        -webkit-app-region: no-drag !important;
+      }
+
+      /* Enhanced screenshot prevention */
+      html {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        user-select: none !important;
+      }
+
+      body {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        user-select: none !important;
+        pointer-events: auto !important;
+      }
+
+      /* Prevent screenshots and screen recording */
+      @media screen {
+        .document-content {
+          -webkit-user-select: none !important;
+          -moz-user-select: none !important;
+          user-select: none !important;
+          position: relative;
+        }
+
+        .document-content::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          pointer-events: none;
+          z-index: 1;
+        }
       }
 
       @media print {
-        body { display: none !important; }
+        * {
+          display: none !important;
+          visibility: hidden !important;
+        }
+        body {
+          display: none !important;
+          visibility: hidden !important;
+        }
       }
 
       .document-content {

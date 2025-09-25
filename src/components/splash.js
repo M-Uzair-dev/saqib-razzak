@@ -1076,9 +1076,9 @@ function SplashCursor({
 
     function generateColor() {
       let c = HSVtoRGB(Math.random(), 0.7, 0.8);
-      c.r *= 0.08;
-      c.g *= 0.08;
-      c.b *= 0.08;
+      c.r *= 0.25;
+      c.g *= 0.25;
+      c.b *= 0.25;
       return c;
     }
 

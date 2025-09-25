@@ -19,22 +19,121 @@ export default function OLevelP1() {
   const [showTopicModal, setShowTopicModal] = useState(false);
   const [showDocumentModal, setShowDocumentModal] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState(null);
+  const [selectedUnit, setSelectedUnit] = useState(null);
   const [documentContent, setDocumentContent] = useState(null);
   const [isLoadingDocument, setIsLoadingDocument] = useState(false);
 
-  const chapterOneTopics = [
-    { id: 1, title: "Binary Represents Data", file: "Topic1_BinaryRepresentsData.docx" },
-    { id: 2, title: "Addition Of Binary", file: "Topic2_AdditionOfBinary.docx" },
-    { id: 3, title: "Two's Complement", file: "Topic3_Two'sComplement.docx" },
-    { id: 4, title: "Logical Binary Shift", file: "Topic4_LogicalBinaryShift.docx" },
-    { id: 5, title: "Uses Of Hexadecimal", file: "Topic5_UsesOfHexa.docx" },
-    { id: 6, title: "Data Compression", file: "Topic6_DataCompression.docx" },
-    { id: 7, title: "Lossy & Lossless File Compression", file: "Topic7_Lossy_LosslessFileCompression.docx" },
-    { id: 8, title: "Sound", file: "Topic8_Sound.docx" },
-    { id: 9, title: "ASCII Code & Unicode", file: "Topic9_ASCII_Code_Unicode.docx" },
-    { id: 10, title: "Images", file: "Topic10_Images.docx" },
-    { id: 11, title: "Measurement of Data Storage", file: "Topic11_MeasurementofDatastorage.docx" },
-    { id: 12, title: "Memory Calculation", file: "Topic12_MemoryCalculation.docx" }
+  const units = [
+    {
+      id: 1,
+      title: "Unit 1",
+      subtitle: "Data Representation & Number Systems",
+      topics: [
+        { id: 1, title: "Binary Represents Data", file: "Topic1_BinaryRepresentsData.docx", type: "docx" },
+        { id: 2, title: "Addition Of Binary", file: "Topic2_AdditionOfBinary.docx", type: "docx" },
+        { id: 3, title: "Two's Complement", file: "Topic3_Two'sComplement.docx", type: "docx" },
+        { id: 4, title: "Logical Binary Shift", file: "Topic4_LogicalBinaryShift.docx", type: "docx" },
+        { id: 5, title: "Uses Of Hexadecimal", file: "Topic5_UsesOfHexa.docx", type: "docx" },
+        { id: 6, title: "Data Compression", file: "Topic6_DataCompression.docx", type: "docx" },
+        { id: 7, title: "Lossy & Lossless File Compression", file: "Topic7_Lossy_LosslessFileCompression.docx", type: "docx" },
+        { id: 8, title: "Sound", file: "Topic8_Sound.docx", type: "docx" },
+        { id: 9, title: "ASCII Code & Unicode", file: "Topic9_ASCII_Code_Unicode.docx", type: "docx" },
+        { id: 10, title: "Images", file: "Topic10_Images.docx", type: "docx" },
+        { id: 11, title: "Measurement of Data Storage", file: "Topic11_MeasurementofDatastorage.docx", type: "docx" },
+        { id: 12, title: "Memory Calculation", file: "Topic12_MemoryCalculation.docx", type: "docx" }
+      ]
+    },
+    {
+      id: 2,
+      title: "Unit 2",
+      subtitle: "Communication & Internet Technologies",
+      topics: [
+        { id: 1, title: "ARQs", file: "ARQs.docx", type: "docx" },
+        { id: 2, title: "Check Error", file: "CheckError.docx", type: "docx" },
+        { id: 3, title: "Data Packets", file: "datapackets.docx", type: "docx" },
+        { id: 4, title: "Data Transmission", file: "datatransmission.docx", type: "docx" },
+        { id: 5, title: "Encryption", file: "Encryption.docx", type: "docx" },
+        { id: 6, title: "Symmetric & Asymmetric Encryption", file: "Symmetric_Asymmetric_Encryption.docx", type: "docx" },
+        { id: 7, title: "USB", file: "USB.docx", type: "docx" },
+        { id: 8, title: "Unit 2 Revision Notes", file: "Unit2_RevisionNotes.docx", type: "docx" }
+      ]
+    },
+    {
+      id: 3,
+      title: "Unit 3",
+      subtitle: "Hardware",
+      topics: [
+        { id: 1, title: "CPU", file: "Topic1_CPU.docx", type: "docx" },
+        { id: 2, title: "Von Neumann Architecture", file: "Topic2_VonNeumannArchitecture.docx", type: "docx" },
+        { id: 3, title: "Components of CPU", file: "Topic3_Componentsof_CPU.docx", type: "docx" },
+        { id: 4, title: "System Buses and Memory", file: "Topic4_SystembusesAndmemory.docx", type: "docx" },
+        { id: 5, title: "Fetch Decode Execute Cycle", file: "Topic5_fetchDecodeExecuteCycle.docx", type: "docx" },
+        { id: 6, title: "Cores, Cache and Internal Clock", file: "Topic6_ Cores, cache and internal clock.docx", type: "docx" },
+        { id: 7, title: "Instruction Set", file: "Topic7_ Instruction set.docx", type: "docx" },
+        { id: 8, title: "Embedded Systems", file: "Topic_8 Embedded systems.docx", type: "docx" },
+        { id: 9, title: "Input Devices", file: "Topic9_inputdevices.docx", type: "docx" },
+        { id: 10, title: "Output Devices", file: "Topic10_ Output Devices.docx", type: "docx" },
+        { id: 11, title: "Sensors", file: "Topic11_Sensors.docx", type: "docx" },
+        { id: 12, title: "Monitoring and Control Application in Sensors", file: "Topic12_ Monitoring and Control Application in Sensors.docx", type: "docx" },
+        { id: 13, title: "Data Storage", file: "Topic13_DataStorage.docx", type: "docx" },
+        { id: 14, title: "Primary Memory", file: "Topic14_ Primary Memory.docx", type: "docx" },
+        { id: 15, title: "Secondary and Off-line Storage", file: "Topic15_ Secondary and Off-line Storage.docx", type: "docx" },
+        { id: 16, title: "Virtual Memory", file: "Topic16_ Virtual Memory.docx", type: "docx" },
+        { id: 17, title: "Cloud Storage", file: "Topic17_ Cloud Storage.docx", type: "docx" },
+        { id: 18, title: "Network Interface Card (NIC)", file: "Topic18_ Network interface card (NIC).docx", type: "docx" },
+        { id: 19, title: "Media Access Control (MAC)", file: "Topic19_ Media Access Control (MAC).docx", type: "docx" },
+        { id: 20, title: "Internet Protocol (IP) Address", file: "Topic20_ Internet protocol (IP) address.docx", type: "docx" },
+        { id: 21, title: "Routers", file: "Topic21_ Routers.docx", type: "docx" },
+        { id: 22, title: "Barcode and QR Code", file: "BarcodeAnd QRcode.docx", type: "docx" },
+        { id: 23, title: "Unit 3 Hardware Revision Notes", file: "Unit3_Hardware_RevisionNotes.docx", type: "docx" }
+      ]
+    },
+    {
+      id: 4,
+      title: "Unit 4",
+      subtitle: "Software",
+      topics: [
+        { id: 1, title: "Types of Software", file: "Topic1_TypesOfSoftware.docx", type: "docx" },
+        { id: 2, title: "Utility Software (Utilities)", file: "Topic2_ Utility software (utilities).docx", type: "docx" },
+        { id: 3, title: "Operating Systems", file: "Topic3_ Operating Systems.docx", type: "docx" },
+        { id: 4, title: "Running of Applications", file: "Topic4_ Running of applications.docx", type: "docx" },
+        { id: 5, title: "Interrupts", file: "Topic5_ Interrupts.docx", type: "docx" },
+        { id: 6, title: "High-level Languages and Low-level Languages", file: "Topic6_ High-level Languages and low-level Languages.docx", type: "docx" },
+        { id: 7, title: "Assembly Language", file: "Topic7_ Assembly Language.docx", type: "docx" },
+        { id: 8, title: "Translators", file: "Topic8_ Translators.docx", type: "docx" },
+        { id: 9, title: "Unit 4 Software Revision Notes", file: "Unit4_SoftwareRevisionNotes.docx", type: "docx" }
+      ]
+    },
+    {
+      id: 5,
+      title: "Unit 5",
+      subtitle: "Internet & Its Uses",
+      topics: [
+        { id: 1, title: "WWW and Internet", file: "Topic1_WWWAndinternet.docx", type: "docx" },
+        { id: 2, title: "URLs", file: "Topic2_URLs.docx", type: "docx" },
+        { id: 3, title: "HTTP and HTTPS", file: "Topic3_ HTTP and HTTPS.docx", type: "docx" },
+        { id: 4, title: "Web Browsers", file: "Topic4_ Web browsers.docx", type: "docx" },
+        { id: 5, title: "Retrieval and Location of Web Pages", file: "Topic5_Retrieval and location of web pages.docx", type: "docx" },
+        { id: 6, title: "Cookies", file: "Topic6_ Cookies.docx", type: "docx" },
+        { id: 7, title: "Digital Currency", file: "Topic7_ Digital Currency.docx", type: "docx" },
+        { id: 8, title: "Blockchain", file: "Topic8_ Blockchaining.docx", type: "docx" },
+        { id: 9, title: "Cyber Security Threats", file: "Topic9_ Cyber security threats.docx", type: "docx" },
+        { id: 10, title: "Keeping Data Safe from Security Threats", file: "Topic10_ Keeping Data Safe from Security Threats.docx", type: "docx" },
+        { id: 11, title: "Unit 5 Revision Notes", file: "Unit5_RevisionNotes.docx", type: "docx" }
+      ]
+    },
+    {
+      id: 6,
+      title: "Unit 6",
+      subtitle: "Automated & Emerging Technologies",
+      topics: [
+        { id: 1, title: "Sensors, Microprocessors, and Actuators", file: "Topic1_Sensors, Microprocessors, and Actuators.docx", type: "docx" },
+        { id: 2, title: "Robotics", file: "Topic2_ Robotics.docx", type: "docx" },
+        { id: 3, title: "Artificial Intelligence", file: "Topic3_AI.docx", type: "docx" },
+        { id: 4, title: "AI Systems", file: "Topic4_ AI systems.docx", type: "docx" },
+        { id: 5, title: "Unit 6 Revision Notes", file: "Unit6_RevisionNotes.docx", type: "docx" }
+      ]
+    }
   ];
 
   useEffect(() => {
@@ -68,7 +167,8 @@ export default function OLevelP1() {
     }
   };
 
-  const handleChapterClick = () => {
+  const handleUnitClick = (unit) => {
+    setSelectedUnit(unit);
     setShowTopicModal(true);
   };
 
@@ -85,7 +185,10 @@ export default function OLevelP1() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ filename: topic.file }),
+        body: JSON.stringify({
+          filename: topic.file,
+          unitPath: `Unit${selectedUnit.id}`
+        }),
       });
 
       if (response.ok) {
@@ -106,6 +209,7 @@ export default function OLevelP1() {
     setShowTopicModal(false);
     setShowDocumentModal(false);
     setSelectedDocument(null);
+    setSelectedUnit(null);
     setDocumentContent(null);
     setIsLoadingDocument(false);
   };
@@ -138,16 +242,104 @@ export default function OLevelP1() {
       }
     };
 
+    const handleVisibilityChange = () => {
+      if (showDocumentModal && document.visibilityState === 'hidden') {
+        // User might be taking a screenshot, add extra protection
+        setTimeout(() => {
+          if (document.visibilityState === 'visible' && showDocumentModal) {
+            // Add temporary overlay to prevent screenshot content
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: #000;
+              z-index: 99999;
+              pointer-events: none;
+            `;
+            document.body.appendChild(overlay);
+            setTimeout(() => {
+              document.body.removeChild(overlay);
+            }, 100);
+          }
+        }, 50);
+      }
+    };
+
+    const preventScreenshots = () => {
+      if (showDocumentModal) {
+        // Add CSS to prevent screenshots
+        const style = document.createElement('style');
+        style.id = 'screenshot-prevention';
+        style.textContent = `
+          body {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -khtml-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-app-region: no-drag !important;
+          }
+
+          /* Prevent content from being visible in screenshots */
+          .document-viewer {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            pointer-events: auto !important;
+          }
+
+          /* Add extra protection layers */
+          .document-viewer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1;
+            pointer-events: none;
+          }
+
+          @media print {
+            * {
+              display: none !important;
+            }
+          }
+        `;
+        document.head.appendChild(style);
+      } else {
+        const existingStyle = document.getElementById('screenshot-prevention');
+        if (existingStyle) {
+          existingStyle.remove();
+        }
+      }
+    };
+
     if (showDocumentModal) {
       document.addEventListener('contextmenu', handleContextMenu);
       document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      preventScreenshots();
       document.body.style.userSelect = 'none';
+    } else {
+      preventScreenshots(); // This will remove the styles when modal is closed
     }
 
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       document.body.style.userSelect = 'auto';
+      const existingStyle = document.getElementById('screenshot-prevention');
+      if (existingStyle) {
+        existingStyle.remove();
+      }
     };
   }, [showDocumentModal]);
 
@@ -175,11 +367,11 @@ export default function OLevelP1() {
                   <span className="w-2 h-2 bg-[#f7991B] rounded-full mr-2 animate-pulse"></span>
                   O Level Paper 1
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                   Master O Level Paper 1
                   <span className="block text-[#f7991B] mt-2">Theory & Concepts</span>
                 </h1>
-                <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                <p className="text-base md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                   Build strong theoretical foundations with comprehensive coverage of all Paper 1 topics. 
                   Focus on conceptual understanding and analytical thinking.
                 </p>
@@ -187,31 +379,34 @@ export default function OLevelP1() {
             </div>
           </section>
 
-          {/* Chapter Notes Section */}
+          {/* Units Section */}
           <section className="py-16 bg-gray-50">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div ref={addToContentRef} className="mb-16">
-                <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Chapter Notes & Study Materials</h2>
-                <div className="flex justify-center">
-                  <div
-                    onClick={handleChapterClick}
-                    className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group hover:scale-105 max-w-sm w-full"
-                  >
-                    <div className="flex flex-col items-center">
-                      <div className="w-20 h-20 bg-gradient-to-br from-[#f7991B] to-[#e6890a] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 1v6" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 1v6" />
-                        </svg>
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#f7991B] transition-colors">Chapter One</h3>
-                      <p className="text-gray-600 text-center mb-4">Data Representation & Number Systems</p>
-                      <div className="bg-[#f7991B]/10 px-4 py-2 rounded-full">
-                        <span className="text-[#f7991B] font-semibold text-sm">{chapterOneTopics.length} Topics</span>
+                <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Units & Study Materials</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {units.map((unit) => (
+                    <div
+                      key={unit.id}
+                      onClick={() => handleUnitClick(unit)}
+                      className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group hover:scale-105"
+                    >
+                      <div className="flex flex-col items-center">
+                        <div className="w-20 h-20 bg-gradient-to-br from-[#f7991B] to-[#e6890a] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                          <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 1v6" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 1v6" />
+                          </svg>
+                        </div>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#f7991B] transition-colors">{unit.title}</h3>
+                        <p className="text-gray-600 text-center mb-4">{unit.subtitle}</p>
+                        <div className="bg-[#f7991B]/10 px-4 py-2 rounded-full">
+                          <span className="text-[#f7991B] font-semibold text-sm">{unit.topics.length} Topics</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -219,12 +414,12 @@ export default function OLevelP1() {
         </main>
 
         {/* Topic Selection Modal */}
-        {showTopicModal && (
+        {showTopicModal && selectedUnit && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4" data-lenis-prevent>
-            <div className="bg-white rounded-xl sm:rounded-2xl max-w-4xl w-full max-h-[90vh] sm:max-h-[80vh] overflow-y-auto" data-lenis-prevent>
+            <div className="bg-white rounded-xl sm:rounded-2xl max-w-6xl w-full max-h-[90vh] sm:max-h-[80vh] overflow-y-auto" data-lenis-prevent>
               <div className="p-4 sm:p-6 border-b border-gray-200">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-lg sm:text-2xl font-bold text-gray-900">Chapter One - Data Representation & Number Systems</h2>
+                  <h2 className="text-lg sm:text-2xl font-bold text-gray-900">{selectedUnit.title} - {selectedUnit.subtitle}</h2>
                   <button
                     onClick={closeModals}
                     className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -237,8 +432,8 @@ export default function OLevelP1() {
                 <p className="text-gray-600 mt-2">Select a topic to view detailed notes</p>
               </div>
               <div className="p-4 sm:p-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                  {chapterOneTopics.map((topic) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+                  {selectedUnit.topics.map((topic) => (
                     <div
                       key={topic.id}
                       onClick={() => handleTopicClick(topic)}
@@ -251,8 +446,13 @@ export default function OLevelP1() {
                           </svg>
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900 text-sm group-hover:text-[#f7991B] transition-colors">{topic.title}</h3>
-                          <p className="text-xs text-gray-500 mt-1">Topic {topic.id}</p>
+                          <h3 className="font-semibold text-gray-900 text-sm group-hover:text-[#f7991B] transition-colors line-clamp-2">{topic.title}</h3>
+                          <div className="flex items-center mt-1 space-x-2">
+                            <p className="text-xs text-gray-500">Topic {topic.id}</p>
+                            <span className="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-600">
+                              DOCX
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -281,7 +481,7 @@ export default function OLevelP1() {
                 </button>
                 <div>
                   <h2 className="text-sm sm:text-lg font-semibold text-gray-900 line-clamp-1">{selectedDocument.title}</h2>
-                  <p className="text-xs sm:text-sm text-gray-500">Chapter One - Topic {selectedDocument.id}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">{selectedUnit.title} - Topic {selectedDocument.id}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-1 sm:space-x-2">
@@ -319,7 +519,7 @@ export default function OLevelP1() {
                         </svg>
                       </div>
                       <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">{selectedDocument.title}</h1>
-                      <p className="text-sm sm:text-base text-gray-600">Chapter One - Data Representation & Number Systems</p>
+                      <p className="text-sm sm:text-base text-gray-600">{selectedUnit.title} - {selectedUnit.subtitle}</p>
                     </div>
 
                     {isLoadingDocument && (
@@ -341,7 +541,6 @@ export default function OLevelP1() {
                         }}
                         onContextMenu={(e) => e.preventDefault()}
                         onDragStart={(e) => e.preventDefault()}
-                        onSelectStart={(e) => e.preventDefault()}
                       />
                     )}
 
