@@ -394,9 +394,7 @@ export default function OLevelP1() {
                       <div className="flex flex-col items-center">
                         <div className="w-20 h-20 bg-gradient-to-br from-[#f7991B] to-[#e6890a] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                           <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 1v6" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 1v6" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                           </svg>
                         </div>
                         <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#f7991B] transition-colors">{unit.title}</h3>
