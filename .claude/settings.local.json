@@ -1,18 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run build:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(npm install:*)",
-      "Bash(npm run dev:*)",
-      "Bash(timeout:*)",
-      "Bash(node:*)",
-      "Bash(del test-api.js)",
-      "Bash(del test-output.html)"
-    ],
-    "deny": [],
-    "ask": []
+      "Bash(npm run dev:*)"
+    ]
   }
 }

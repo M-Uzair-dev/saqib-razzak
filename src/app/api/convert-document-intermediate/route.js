@@ -6,18 +6,17 @@ const mammoth = require('mammoth');
 
 export async function POST(request) {
   try {
-    const { filename, folder } = await request.json();
+    const { filename, level } = await request.json();
 
-    if (!filename) {
+    if (!filename || !level) {
       return NextResponse.json(
-        { error: 'Filename is required' },
+        { error: 'Filename and level are required' },
         { status: 400 }
       );
     }
 
-    // P2 files are stored in public/OP2/notes/ or public/OP2/important_topics/
-    const subfolder = folder || 'notes';
-    const basePath = path.join('public', 'OP2', subfolder);
+    // Intermediate files are stored in public/XI/ or public/XII/
+    const basePath = path.join('public', level);
     const filePath = path.join(process.cwd(), basePath, filename);
 
     if (!fs.existsSync(filePath)) {
@@ -25,19 +24,6 @@ export async function POST(request) {
         { error: 'Document not found' },
         { status: 404 }
       );
-    }
-
-    // Check if file is PDF
-    const isPDF = filename.toLowerCase().endsWith('.pdf');
-
-    if (isPDF) {
-      // For PDF files, return the URL path
-      const pdfUrl = `/OP2/${subfolder}/${filename}`;
-      return NextResponse.json({
-        isPDF: true,
-        url: pdfUrl,
-        html: null
-      });
     }
 
     // For DOCX files, convert to HTML
@@ -50,7 +36,6 @@ export async function POST(request) {
     htmlContent = addSecurityStyles(htmlContent);
 
     return NextResponse.json({
-      isPDF: false,
       html: htmlContent,
       messages: result.messages
     });

@@ -23,6 +23,8 @@ export default function OLevelP2() {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [documentContent, setDocumentContent] = useState(null);
   const [isLoadingDocument, setIsLoadingDocument] = useState(false);
+  const [isPDFDocument, setIsPDFDocument] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -76,6 +78,14 @@ export default function OLevelP2() {
         { id: 4, title: "Library Routines", file: "Unit8_Part3_LibraryRoutines.docx", type: "docx", folder: "notes" },
         { id: 5, title: "Arrays", file: "Unit8_Part4_Arrays.docx", type: "docx", folder: "notes" }
       ]
+    },
+    {
+      id: 9,
+      title: "Unit 9",
+      subtitle: "Database",
+      topics: [
+        { id: 1, title: "Database Complete Notes", file: "Unit9_DatabaseCompleteNotes.docx", type: "docx", folder: "notes" }
+      ]
     }
   ];
 
@@ -105,6 +115,8 @@ export default function OLevelP2() {
     setShowDocumentModal(true);
     setIsLoadingDocument(true);
     setDocumentContent(null);
+    setIsPDFDocument(false);
+    setPdfUrl(null);
 
     try {
       const response = await fetch('/api/convert-document-p2', {
@@ -120,7 +132,12 @@ export default function OLevelP2() {
 
       if (response.ok) {
         const data = await response.json();
-        setDocumentContent(data.html);
+        if (data.isPDF) {
+          setIsPDFDocument(true);
+          setPdfUrl(data.url);
+        } else {
+          setDocumentContent(data.html);
+        }
       } else {
         throw new Error('Failed to load document');
       }
@@ -137,6 +154,8 @@ export default function OLevelP2() {
     setShowDocumentModal(true);
     setIsLoadingDocument(true);
     setDocumentContent(null);
+    setIsPDFDocument(false);
+    setPdfUrl(null);
 
     try {
       const response = await fetch('/api/convert-document-p2', {
@@ -152,7 +171,12 @@ export default function OLevelP2() {
 
       if (response.ok) {
         const data = await response.json();
-        setDocumentContent(data.html);
+        if (data.isPDF) {
+          setIsPDFDocument(true);
+          setPdfUrl(data.url);
+        } else {
+          setDocumentContent(data.html);
+        }
       } else {
         throw new Error('Failed to load document');
       }
@@ -171,6 +195,8 @@ export default function OLevelP2() {
     setSelectedUnit(null);
     setDocumentContent(null);
     setIsLoadingDocument(false);
+    setIsPDFDocument(false);
+    setPdfUrl(null);
   };
 
   useEffect(() => {
@@ -474,8 +500,8 @@ export default function OLevelP2() {
                           <h3 className="font-semibold text-gray-900 text-sm group-hover:text-[#f7991B] transition-colors line-clamp-2">{topic.title}</h3>
                           <div className="flex items-center mt-1 space-x-2">
                             <p className="text-xs text-gray-500">Topic {topic.id}</p>
-                            <span className="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-600">
-                              DOCX
+                            <span className={`text-xs px-2 py-0.5 rounded-full ${topic.type === 'pdf' ? 'bg-red-100 text-red-600' : 'bg-blue-100 text-blue-600'}`}>
+                              {topic.type === 'pdf' ? 'PDF' : 'DOCX'}
                             </span>
                           </div>
                         </div>
@@ -558,7 +584,24 @@ export default function OLevelP2() {
                       </div>
                     )}
 
-                    {!isLoadingDocument && documentContent && (
+                    {!isLoadingDocument && isPDFDocument && pdfUrl && (
+                      <div className="relative w-full" style={{ height: 'calc(100vh - 300px)', minHeight: '500px' }}>
+                        <iframe
+                          src={pdfUrl}
+                          className="w-full h-full border-0 rounded-lg"
+                          title={selectedDocument.title}
+                          onContextMenu={(e) => e.preventDefault()}
+                          style={{
+                            userSelect: 'none',
+                            WebkitUserSelect: 'none',
+                            MozUserSelect: 'none',
+                            msUserSelect: 'none'
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {!isLoadingDocument && !isPDFDocument && documentContent && (
                       <div
                         className="document-viewer"
                         dangerouslySetInnerHTML={{ __html: documentContent }}
@@ -573,7 +616,7 @@ export default function OLevelP2() {
                       />
                     )}
 
-                    {!isLoadingDocument && !documentContent && (
+                    {!isLoadingDocument && !documentContent && !isPDFDocument && (
                       <div className="text-center py-8 sm:py-12">
                         <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                           <svg className="w-8 h-8 sm:w-12 sm:h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
